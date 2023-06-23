@@ -1,0 +1,32 @@
+.carousel-slide img {
+    height: 300px; /* Định nghĩa chiều cao của ảnh */
+  }
+
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .carousel-arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .carousel-arrow-left {
+    color: #fff;
+  }
+  
+  .carousel-arrow-right {
+    color: #fff;
+  }
+  
+  .carousel-arrow:focus {
+    outline: none;
+  }
+  
