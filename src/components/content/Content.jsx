@@ -131,7 +131,7 @@ const Content = () => {
           <h2>Category</h2>
         </div>
         <div className="col-12">
-          <div className="category">
+          <div className="sup-category">
             <div>Love</div>
             <div>Bussiness</div>
             <div>Family</div>
