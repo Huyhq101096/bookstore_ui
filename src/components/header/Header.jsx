@@ -6,7 +6,7 @@ import logo from "../../assets/logo";
 const Header = () => {
   return (
     <header className="header">
-      <div className="custom-container d-flex justify-content-between align-items-center">
+      <div className="custom-container d-flex justify-content-between align-items-center container">
         <div className="logo">
           <img src={logo} alt="Logo" />
         </div>

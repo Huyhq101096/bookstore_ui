@@ -6,6 +6,8 @@ import Detail from './pages/user/Detail';
 import Login from './pages/user/Login';
 import Registration from './pages/user/Registration';
 import Cart from './pages/user/Cart'
+import AddProduct from './pages/admin/AddProduct';
+
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 const App = () => {
@@ -17,6 +19,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Registration />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/addproduct' element={<AddProduct />} />
       </Routes>
     </BrowserRouter>
   )

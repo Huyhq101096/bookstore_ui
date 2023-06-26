@@ -1,6 +1,7 @@
 .container-content {
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
 }
 
 .category-container {
@@ -13,20 +14,49 @@
 
 .category {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
+  justify-content: center;
 }
 
 .product-container {
-  margin-top: 20px;
+  margin-top: 30px !important;
 }
 
 .product-list {
   margin-bottom: 20px;
 }
 
-.pagination {
+.product {
+  text-align: center;
+}
+
+.product-image img {
+  width: 230px;
+  height: 300px;
+}
+
+.product-name {
+  margin-top: 20px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-value {
+  margin-left: 5px; /* Khoảng cách giữa rating component và giá trị rating */
+}
+
+.product-pagination {
   display: flex;
   justify-content: center;
+  gap: 5px;
+}
+
+.product-pagination button {
+  width: 5%;
 }
 
 h2 {
