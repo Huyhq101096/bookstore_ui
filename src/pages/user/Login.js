@@ -60,7 +60,7 @@ const Login = () => {
             {showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
           </button>
         </div>
-        <button type="submit" className="btn btn-primary">Đăng nhập</button>
+        <button type="submit" className="btn btn-primary btn-register">Đăng nhập</button>
         <button type="button" className="btn btn-secondary" onClick={handleRegister}>
           Đăng ký tài khoản
         </button>

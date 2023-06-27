@@ -13,6 +13,11 @@ const Registration = () => {
     setEmail(e.target.value);
   };
 
+  const handleLogin = () => {
+    // Xử lý đăng ký tài khoản
+    window.location.href = '/login';
+  };
+
   const handlePhoneChange = (e) => {
     const value = e.target.value;
     setPhone(value);
@@ -98,6 +103,7 @@ const Registration = () => {
           {passwordMatchError && <p className="error-message">Mật khẩu không khớp. Vui lòng nhập lại.</p>}
         </div>
         <button type="submit" className="btn btn-primary">Đăng ký</button>
+        <button type="submit" className="btn btn-primary" onClick={handleLogin}>Đăng nhập</button>
       </form>
     </div>
   );

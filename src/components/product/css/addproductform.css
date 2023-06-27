@@ -1,7 +1,6 @@
 .add-product-form {
-    max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -45,5 +44,19 @@
   .add-product-form button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+  }
+
+  .input-with-select {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-with-select input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .input-with-select select {
+    width: 120px;
   }
   

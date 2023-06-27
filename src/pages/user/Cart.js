@@ -61,7 +61,7 @@ const CartPage = () => {
   return (
     <div>
       <Header />
-      <div className="container">
+      <div className="container cart-container">
         <h2>Giỏ hàng</h2>
         <div className="row cart-items">
           {cartItems.map((item) => (

@@ -1,12 +1,11 @@
 /* cart.css */
 
 .cart-container {
-  margin-top: 20px;
+  margin-top: 1.6rem;
 }
 
 .cart-items {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 2rem 8rem;
 }
 
 .cart-items .col-md-4 {
@@ -79,5 +78,11 @@
 
 .card-body {
     display: grid;
+    gap: 30px;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+
+  .text-right {
+    float: right;
+    padding-right: 8rem;
   }
