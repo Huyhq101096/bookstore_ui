@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
 import StarRatingComponent from "react-star-rating-component";
@@ -149,15 +150,16 @@ const Content = () => {
               {currentProducts.map((product) => (
                 <div className="col-md-3" key={product.id}>
                   <div className="product">
-                    <div className="product-image">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className=""
-                      />
-                    </div>
-
-                    <h4 className="product-name">{product.name}</h4>
+                    <Link to={`/product/${product.id}`}>
+                      <div className="product-image">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className=""
+                        />
+                      </div>
+                      <h4 className="product-name">{product.name}</h4>
+                    </Link>
                     <div className="product-rating">
                       <StarRatingComponent
                         name={`rating_${product.id}`}
