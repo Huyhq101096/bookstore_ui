@@ -1,14 +1,13 @@
 import React from 'react';
 import './category.css';
 
-const Category = () => {
+const Category = ({ handleMenuClick }) => {
   return (
     <div className="category">
       <h2>Dash Board</h2>
       <ul>
-        <li>Quản lý người dùng</li>
-        <li>Quản lý sản phẩm</li>
-        <li>Thêm sản phẩm</li>
+        <li onClick={() => handleMenuClick('addProduct')}>Add Product</li>
+        <li onClick={() => handleMenuClick('productManagement')}>Product Management</li>
       </ul>
     </div>
   );
