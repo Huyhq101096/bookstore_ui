@@ -24,7 +24,7 @@ const ProductDetail = () => {
   return (
     <section className="container product-detail">
       <div className="product-image-info">
-        <div className="product-image">
+        <div className="product-detail-image">
           <img
             src="https://d1j8r0kxyu9tj8.cloudfront.net/images/1567492611Rj5siYiYrkqcvX8.jpg"
             alt="Product"
