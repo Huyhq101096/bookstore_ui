@@ -62,7 +62,11 @@ const CartPage = () => {
     <div>
       <Header />
       <div className="container cart-container">
-        <h2>Giỏ hàng</h2>
+        <div className="cart-container_header">
+          <a href="/">Home</a>
+          <span>Giỏ hàng</span>
+        </div>
+        
         <div className="row cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="col-md-4">
@@ -105,7 +109,8 @@ const CartPage = () => {
             </div>
           ))}
         </div>
-        <div className="text-right">
+        <div className="cart-total">
+          <button>Thanh toán</button>
           <p className="font-weight-bold">Tổng số tiền: {totalPrice}</p>
         </div>
       </div>

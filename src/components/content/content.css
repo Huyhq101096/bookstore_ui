@@ -12,8 +12,19 @@
   margin-bottom: 20px;
 }
 
+.category-container h2 {
+  font-family: Poppins-Bold;
+  padding-left: 2rem;
+  float: left;
+  font-size: 36px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
 .sup-category {
   display: flex;
+  float: left;
+  padding-left: 2rem;
   gap: 30px;
   justify-content: center;
 }
@@ -66,10 +77,8 @@ h2 {
 
 .sup-category div {
   padding: 10px 20px;
-  background-color: #eee;
   border-radius: 5px;
   color: #333;
-  font-weight: bold;
   cursor: pointer;
 }
 

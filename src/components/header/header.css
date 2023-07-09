@@ -60,11 +60,10 @@
 .cart .icon,
 .login .icon {
   margin-right: 5px;
-  color: white;
 }
 
 .cart a,
 .login a {
   text-decoration: none;
-  color: white;
+  color: black;
 }

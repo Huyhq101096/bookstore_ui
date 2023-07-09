@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Content from "../../components/content/Content";
 import "./css/cart.css";
 
 const Shop = () => {
@@ -8,12 +9,7 @@ const Shop = () => {
         <div>
           <Header />
     
-          <main>
-            <section className="container">
-              <h1>Shop</h1>
-
-            </section>
-          </main>
+          <Content />
     
           <Footer />
         </div>

@@ -1,22 +1,19 @@
 import React from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import About from "../../components/about/About"
 import "./css/about.css";
 
-const About = () => {
+const AboutPerson = () => {
   return (
-    <div>
+    <>
       <Header />
 
-      <main>
-        <section className="container">
-          <h1>About</h1>
-        </section>
-      </main>
+      <About />
 
       <Footer />
-    </div>
+    </>
   );
 };
 
-export default About;
+export default AboutPerson;
