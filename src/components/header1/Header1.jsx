@@ -1,134 +1,77 @@
-import React from "react";
-import {
-  FaShoppingCart,
-  FaUser,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaDribbble,
-} from "react-icons/fa";
-import "./css/style.css";
+import React, { useEffect, useState } from "react";
+import './css/style.css'
+import hero_1 from '../../assets/hero_1.jpg'
+import hero_3 from '../../assets/hero_3.jpg'
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 
 const Header1 = () => {
-  return (
-    <section className="ftco-section">
-      <div className="container">
-        <div className="row justify-content-between">
-          <div className="col">
-            <a className="navbar-brand" href="index.html">
-              Papermag <span>Magazine</span>
-            </a>
-          </div>
-          <div className="col d-flex justify-content-end">
-            <div className="social-media">
-              <p className="mb-0 d-flex">
-                <a
-                  href="#"
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  <FaFacebook /> {/* Icon Facebook */}
-                  <i className="sr-only">Facebook</i>
-                </a>
-                <a
-                  href="#"
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  <FaTwitter /> {/* Icon Twitter */}
-                  <i className="sr-only">Twitter</i>
-                </a>
-                <a
-                  href="#"
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  <FaInstagram /> {/* Icon Instagram */}
-                  <i className="sr-only">Instagram</i>
-                </a>
-                <a
-                  href="#"
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  <FaDribbble /> {/* Icon Dribbble */}
-                  <i className="sr-only">Dribbble</i>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <div className="container">
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a href="/" className="nav-link">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="dropdown04"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Page
-                </a>
-                <div className="dropdown-menu" aria-labelledby="dropdown04">
-                  <a className="dropdown-item" href="#">
-                    Page 1
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Page 2
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Page 3
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Page 4
-                  </a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Catalog
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Blog
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Contact
-                </a>
-              </li>
-              <li className="nav-item">
-                  <div className="search d-flex align-items-center">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      className="search-input"
-                    />
-                    <button className="search-button">Search</button>
-                  </div>
-              </li>
-            </ul>
-          </div>
 
-          <div className="cart">
-            <FaShoppingCart className="icon" />
-            <a href="/cart">Cart</a>
-          </div>
-          <div className="login">
-            <FaUser className="icon" />
-            <a href="/login">Login</a>
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [hero_1, hero_3,hero_1]; // Thêm các ảnh slideshow khác vào đây
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <header className="site-navbar mt-3">
+        <div className="container-fluid">
+          <div className="align-items-center header-wrapper">
+            <div className="site-logo"><a href="index.html">Brand</a></div>
+            <nav className="site-nav">
+              <ul className="site-menu">
+                <li><a href="index.html" className="nav-link active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li className="site-menu-item has-children dropdown">
+                  <span className="nav-link">Job Listings</span>
+                  <ul className="dropdown">
+                    <li><a href="job-single.html">Job Single</a></li>
+                    <li><a href="post-job.html">Post a Job</a></li>
+                  </ul>
+                </li>
+                <li className="site-menu-item has-children dropdown">
+                  <span className="nav-link">Pages</span>
+                  <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="service-single.html">Service Single</a></li>
+                    <li><a href="blog-single.html">Blog Single</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="portfolio-single.html">Portfolio Single</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="faq.html">Frequently Ask Questions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                  </ul>
+                </li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li className="site-menu-item d-lg-none"><a href="post-job.html"><span className="mr-2">+</span> Post a Job</a></li>
+                <li className="site-menu-item d-lg-none"><a href="login.html">Log In</a></li>
+              </ul>
+            </nav>
+
+            <div className="header-actions">
+              <div className="cart">
+                <FaShoppingCart className="icon" />
+                <a href="/cart">Cart</a>
+              </div>
+              <div className="login">
+                <FaUser className="icon" />
+                <a href="/login">Login</a>
+              </div>
+
+            </div>
+
           </div>
         </div>
-      </nav>
-    </section>
+      </header>
+
+      <div className="hero" style={{ backgroundImage: `url(${images[currentImage]})` }}></div>
+
+    </div>
   );
 };
 

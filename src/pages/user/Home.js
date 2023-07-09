@@ -8,11 +8,11 @@ import Header1 from "../../components/header1/Header1";
 const Home = () => {
   return (
     <>
-      <Header />
-      {/* <Header1 /> */}
-      <div className="slide-carousel">
+      {/* <Header /> */}
+      <Header1 />
+      {/* <div className="slide-carousel">
       <Banner />
-      </div>
+      </div> */}
       <Content />
       <Footer />
     </>
