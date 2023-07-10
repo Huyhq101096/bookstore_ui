@@ -1,45 +1,68 @@
-import React from 'react';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import '../header/header.css';
+import React from "react";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
+import "../header/header.css";
 import logo from "../../assets/logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
     <header className="header">
-      <div className="custom-container d-flex justify-content-between align-items-center container">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
+      <div className="header-top">
+        <div className="d-flex justify-content-between align-items-center container">
+          <div className="header-info-left d-flex align-items-center logo">
+            <img src={logo} alt="Logo" />
+            <form action="#" className="form-box">
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search book by author or publisher"
+                  className="search-input"
+                />
+                <div className="search-icon">
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="search-icon-svg"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <nav className="navbar navbar-expand-lg">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/shop">
-                Shop
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/about">
-                About
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div className="search d-flex align-items-center">
-          <input type="text" placeholder="Search" className="search-input" />
-          <button className="search-button">Search</button>
+
+        <div className="header-info-right d-flex align-items-center">
+          <div className="cart">
+            <FaShoppingCart className="icon" />
+            <a href="/cart">Cart</a>
+          </div>
+          <div className="login">
+            <FaUser className="icon" />
+            <a href="/login">Login</a>
+          </div>
         </div>
-        <div className="cart">
-          <FaShoppingCart className="icon" />
-          <a href="/cart">Cart</a>
-        </div>
-        <div className="login">
-          <FaUser className="icon" />
-          <a href="/login">Login</a>
+      </div>
+
+      <div className="header-bottom">
+        <div className="container">
+          <nav className="nav-menu">
+            <ul className="navbar-row">
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/shop">
+                  Shop
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/about">
+                  About
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

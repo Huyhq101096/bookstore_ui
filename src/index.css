@@ -17,9 +17,10 @@
   }
   
   body {
-    font-family: Poppins-Bold;
-    color: #333;
-    background-color: #f8f8f8;
+    font-family: "Roboto",sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 16px;
   }
   
   /* Thiết lập kích thước và căn chỉnh cho phần tiêu đề */
@@ -74,10 +75,6 @@
     margin-bottom: 8px;
   }
   
-  /* Thiết lập kích thước và căn chỉnh cho các phần tử trong form */
-  form {
-    margin-bottom: 16px;
-  }
   
   /* Thiết lập kích thước và căn chỉnh cho phần footer */
   footer {

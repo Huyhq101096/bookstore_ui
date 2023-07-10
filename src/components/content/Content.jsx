@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
 import StarRatingComponent from "react-star-rating-component";
+import { AiOutlineFilter, AiOutlineSearch } from 'react-icons/ai';
 
 const Content = () => {
   const productList = [
@@ -131,17 +132,21 @@ const Content = () => {
         <div className="col-12">
           <h2>Category</h2>
         </div>
-        <div className="col-12">
+        <div className="col-12 sup-filter-category">
           <div className="sup-category">
             <div>Love</div>
             <div>Bussiness</div>
             <div>Family</div>
             <div>Ebook</div>
           </div>
+          <div className="filter-category">
+            <div className=""><AiOutlineFilter />{'\t'} Filter</div>
+            <div className=""><AiOutlineSearch />{'\t'}Search</div>
+          </div>
         </div>
       </div>
       <div className="row product-container">
-        <div className="col-12">
+        <div className="col-12 product-container_text">
           <h2>Danh sách sản phẩm</h2>
         </div>
         <div className="col-12">

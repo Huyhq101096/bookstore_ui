@@ -21,16 +21,45 @@
   text-transform: uppercase;
 }
 
+.sup-filter-category {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-category {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter-category div {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+}
+
 .sup-category {
   display: flex;
-  float: left;
-  padding-left: 2rem;
+  padding-left: 1rem;
   gap: 30px;
-  justify-content: center;
 }
+
 
 .product-container {
   margin-top: 30px !important;
+}
+
+.product-container_text {
+  margin-bottom: 1rem;
+}
+
+.product-container h2 {
+  font-family: Poppins-Bold;
+  padding-left: 2rem;
+  float: left;
+  font-size: 36px;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .product-list {
