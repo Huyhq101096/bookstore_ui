@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./css/login.css";
-import jQuery from 'jquery'
+import handleLoginSubmit from "./js/action_login";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -20,29 +20,8 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(
-      jQuery.ajax({
-        type: "POST",
-        url: "http://localhost:8084/login/signin",
-        contentType: "application/json",
-        data: {
-          "email": username,
-          "password": password
-        },
-        
-        // dataType: "json",
-        success: function (result) {
-          if (result.statusCode === 200) {
-            console.log(result.data)
-          } else {
-            console.log("Wrong email and password");
-          }
-        }
-      })
-    );
-    // Xử lý đăng nhập - gửi dữ liệu username và password đi
-    console.log("Đăng nhập với username:", username, "và password:", password);
-    
+    e.preventDefault();
+    handleLoginSubmit(username, password);
   };
 
   const handleRegister = () => {
