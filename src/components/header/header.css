@@ -34,15 +34,6 @@
   padding-left: 30px;
 }
 
-/* .search-input::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-} */
 
 .search-icon {
   position: absolute;
@@ -62,7 +53,6 @@
   background-size: cover;
 }
 
-
 .nav-menu{
   display: flex;
   justify-content: center;
@@ -72,7 +62,9 @@
 .navbar-row {
   display: flex;
   flex-direction: row;
-
+  margin: auto;
+  padding: 1rem;
+  gap: 2rem;
 }
 
 .nav-item {
@@ -81,16 +73,11 @@
   margin: 0 10px;
 }
 
-
-
-
-
 .cart,
 .login {
   display: flex;
   align-items: center;
   margin-left: 2rem;
-
 }
 
 .cart .icon,
