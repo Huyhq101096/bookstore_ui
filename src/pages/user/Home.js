@@ -4,6 +4,7 @@ import Banner from "../../components/banner/Banner"
 import Content from "../../components/content/Content"
 import Footer from "../../components/footer/Footer";
 import Header1 from "../../components/header1/Header1";
+import './css/home.css'
 
 const Home = () => {
   return (
