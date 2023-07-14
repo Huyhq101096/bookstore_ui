@@ -8,8 +8,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   return (
     <header className="header">
-      <div className="header-top">
-        <div className="d-flex justify-content-between align-items-center container">
+      <div className="header-top container">
+        <div className="d-flex justify-content-between align-items-center ">
           <div className="header-info-left d-flex align-items-center logo">
             <img src={logo} alt="Logo" />
             <form action="#" className="form-box">
@@ -30,7 +30,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="header-info-right d-flex align-items-center">
+        <div className="header-info-right d-flex align-items-center header-right">
           <div className="cart">
             <FaShoppingCart className="icon" />
             <a href="/cart">Cart</a>

@@ -4,35 +4,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
 import StarRatingComponent from "react-star-rating-component";
 import { AiOutlineFilter, AiOutlineSearch } from 'react-icons/ai';
+import best1 from '../../assets/best_selling1.jpg.webp'
+import best2 from '../../assets/best_selling2.jpg.webp'
+import best3 from '../../assets/best_selling3.jpg.webp'
+import best4 from '../../assets/best_selling4.jpg.webp'
 
 const Content = () => {
   const productList = [
     {
       id: 1,
       name: "Product 1",
-      image:
-        "https://marketplace.canva.com/EAD5DFBuM78/1/0/1003w/canva-c%E1%BA%B7p-%C4%91%C3%B4i-trong-c%E1%BB%8F-khoa-h%E1%BB%8Dc-vi%E1%BB%85n-t%C6%B0%E1%BB%9Fng-s%C3%A1ch-b%C3%ACa-eRK4o7m6a6c.jpg",
+      image: best1,
       rating: 4.5,
     },
     {
       id: 2,
       name: "Product 2",
-      image:
-        "https://d1j8r0kxyu9tj8.cloudfront.net/images/1567492611Rj5siYiYrkqcvX8.jpg",
+      image: best2,
       rating: 4.6,
     },
     {
       id: 3,
       name: "Product 3",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqVsk3AihFj1RfaiZ0XkM6rXTEQ_yZINU19w&usqp=CAU",
+      image: best3,
       rating: 3.5,
     },
     {
       id: 4,
       name: "Product 4",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+      image: best4,
       rating: 2.3,
     },
     {
@@ -153,7 +153,7 @@ const Content = () => {
           <div className="product-list">
             <div className="row">
               {currentProducts.map((product) => (
-                <div className="col-md-3" key={product.id}>
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6" key={product.id}>
                   <div className="product">
                     <Link to={`/product/${product.id}`}>
                       <div className="product-image">
@@ -164,8 +164,10 @@ const Content = () => {
                         />
                       </div>
                       <h4 className="product-name">{product.name}</h4>
+                      <p className="author-name">Ten tac gia</p>
                     </Link>
-                    <div className="product-rating">
+                    <div className="product-price-rating">
+                      <div className="product-rating">
                       <StarRatingComponent
                         name={`rating_${product.id}`}
                         value={product.rating}
@@ -175,6 +177,11 @@ const Content = () => {
                         editing={false}
                       />
                       <span className="rating-value">{product.rating}</span>
+                      </div>
+                      <div className="product_price">
+                          <p className="product_price-text">$50</p>
+                      </div>
+                      
                     </div>
                   </div>
                 </div>

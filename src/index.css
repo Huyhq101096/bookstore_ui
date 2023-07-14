@@ -17,7 +17,7 @@
   }
   
   body {
-    font-family: "Roboto",sans-serif !important;
+    font-family: "Roboto",sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: 16px;
@@ -28,11 +28,20 @@
     font-size: 24px;
     text-align: center;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display",serif;
+    color: #1a1a1a;
+    margin-top: 0px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: normal;
+}
   
   /* Thiết lập màu sắc và căn chỉnh cho các liên kết */
   a {
     color: #007bff;
-    text-decoration: none;
+    text-decoration: none !important;
   }
   
   /* Thiết lập kích thước và căn chỉnh cho các nút */
