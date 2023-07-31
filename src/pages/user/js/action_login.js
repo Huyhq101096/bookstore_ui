@@ -15,7 +15,7 @@ const handleLoginSubmit = (username, password) => {
       console.log(response.data);
 
       // Lưu token vào localStorage
-      localStorage.setItem("token", response.data);
+      localStorage.setItem("token", "Bearer " + response.data);
 
       // Xử lý sau khi xác thực thành công, ví dụ: chuyển hướng đến trang chính
       window.location.href = "/";

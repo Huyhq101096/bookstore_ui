@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
@@ -8,8 +8,21 @@ import best1 from '../../assets/best_selling1.jpg.webp'
 import best2 from '../../assets/best_selling2.jpg.webp'
 import best3 from '../../assets/best_selling3.jpg.webp'
 import best4 from '../../assets/best_selling4.jpg.webp'
+import best5 from '../../assets/best_selling5.jpg.webp'
+import best6 from '../../assets/best_selling6.jpg.webp'
+import best7 from '../../assets/best_selling7.jpg.webp'
+import best8 from '../../assets/best_selling8.jpg.webp'
+import best9 from '../../assets/best_selling9.jpg.webp'
+import { getAllProducts } from './action_content';
+
+
+const getTokenFromLocalStorage = () => {
+  return localStorage.getItem("token");
+};
 
 const Content = () => {
+
+
   const productList = [
     {
       id: 1,
@@ -39,35 +52,35 @@ const Content = () => {
       id: 5,
       name: "Product 5",
       image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+        best5,
       rating: 2.9,
     },
     {
       id: 6,
       name: "Product 6",
       image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+      best6,
       rating: 9.5,
     },
     {
       id: 7,
       name: "Product 7",
       image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+      best7,
       rating: 3.6,
     },
     {
       id: 8,
       name: "Product 8",
       image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+      best8,
       rating: 2.8,
     },
     {
       id: 9,
       name: "Product 9",
       image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
+      best9,
       rating: 3.9,
     },
     {
@@ -113,6 +126,14 @@ const Content = () => {
       rating: 2.36,
     },
   ];
+
+  const [productList1, setProductList] = useState([]);
+
+  useEffect(() => {
+    const token = getTokenFromLocalStorage();
+    console.log(token)
+    // getAllProducts(token).then((data) => setProductList(data));
+  }, []);
 
   const productsPerPage = 8;
   const totalPages = Math.ceil(productList.length / productsPerPage);
