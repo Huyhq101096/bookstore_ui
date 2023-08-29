@@ -4,16 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
 import StarRatingComponent from "react-star-rating-component";
 import { AiOutlineFilter, AiOutlineSearch } from 'react-icons/ai';
-import best1 from '../../assets/best_selling1.jpg.webp'
-import best2 from '../../assets/best_selling2.jpg.webp'
-import best3 from '../../assets/best_selling3.jpg.webp'
-import best4 from '../../assets/best_selling4.jpg.webp'
-import best5 from '../../assets/best_selling5.jpg.webp'
-import best6 from '../../assets/best_selling6.jpg.webp'
-import best7 from '../../assets/best_selling7.jpg.webp'
-import best8 from '../../assets/best_selling8.jpg.webp'
-import best9 from '../../assets/best_selling9.jpg.webp'
+import best1 from '../../assets/IMG1.webp'
+import best2 from '../../assets/IMG2.webp'
+import best3 from '../../assets/IMG3.webp'
+import best4 from '../../assets/IMG4.webp'
+import best5 from '../../assets/IMG5.webp'
+import best6 from '../../assets/IMG6.webp'
+import best7 from '../../assets/IMG7.webp'
+import best8 from '../../assets/IMG8.webp'
+import best9 from '../../assets/IMG9.webp'
 import { getAllProducts } from './action_content';
+import { error } from "jquery";
 
 
 const getTokenFromLocalStorage = () => {
@@ -21,7 +22,6 @@ const getTokenFromLocalStorage = () => {
 };
 
 const Content = () => {
-
 
   const productList = [
     {
@@ -131,8 +131,12 @@ const Content = () => {
 
   useEffect(() => {
     const token = getTokenFromLocalStorage();
-    console.log(token)
-    // getAllProducts(token).then((data) => setProductList(data));
+    // console.log(token)
+    getAllProducts(token)
+    .then((data) => setProductList(data))
+    .catch((error) => {
+      console.error("Error fetching data from API: ", error);
+    });
   }, []);
 
   const productsPerPage = 8;
@@ -141,7 +145,7 @@ const Content = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
-  const currentProducts = productList.slice(startIndex, endIndex);
+  const currentProducts = productList1.slice(startIndex, endIndex);
 
   const goToPage = (page) => {
     setCurrentPage(page);
@@ -179,7 +183,7 @@ const Content = () => {
                     <Link to={`/product/${product.id}`}>
                       <div className="product-image">
                         <img
-                          src={product.image}
+                          src={require(`../../assets/${product.image}`)}
                           alt={product.name}
                           className=""
                         />
@@ -200,7 +204,7 @@ const Content = () => {
                       <span className="rating-value">{product.rating}</span>
                       </div>
                       <div className="product_price">
-                          <p className="product_price-text">$50</p>
+                          <p className="product_price-text">${product.price}</p>
                       </div>
                       
                     </div>

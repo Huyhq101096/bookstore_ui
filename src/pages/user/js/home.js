@@ -3,7 +3,7 @@ import $ from "jquery";
 const handleLoginSubmit = (username, password) => {
 
   $.ajax({
-    url: "http://localhost:8080/login/signin",
+    url: URL + "login/signin",
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({
