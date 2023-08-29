@@ -1,9 +1,41 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import "./css/productdetail.css";
+import { useParams } from "react-router-dom";
+import { getBookDetail } from "./js/action_bookdetail";
 
-const ProductDetail = () => {
+
+const getTokenFromLocalStorage = () => {
+  return localStorage.getItem("token");
+};
+
+const BookDetail = () => {
+
   const [quantity, setQuantity] = useState(1);
-  const pricePerItem = 10; // Replace with the actual price per item
+  const [bookDetail, setProductDetail] = useState(null);
+  const [pricePerItem, setPricePerItem] = useState(0);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const token = getTokenFromLocalStorage(); // Lấy token từ localStorage
+   
+    getBookDetail(token, id)
+      .then((data) => {
+        setProductDetail(data); // Lưu thông tin chi tiết sản phẩm vào state
+        setPricePerItemFromData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching product data:", error);
+      });
+  }, []); // Chạy một lần khi component được tạo
+
+
+  const setPricePerItemFromData = (data) => {
+    if (data) {
+      setPricePerItem(data.price); // Set pricePerItem từ dữ liệu chi tiết sách
+    } else {
+      setPricePerItem(0); // Nếu dữ liệu không có, set giá trị mặc định là 0
+    }
+  };
 
   const handleIncreaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -19,6 +51,10 @@ const ProductDetail = () => {
     // Add your logic to add the product to the cart
   };
 
+  if (!bookDetail) {
+    return <p>Loading...</p>;
+  }
+
   const totalPrice = pricePerItem * quantity;
 
   return (
@@ -26,13 +62,13 @@ const ProductDetail = () => {
       <div className="product-image-info">
         <div className="product-detail-image">
           <img
-            src="https://d1j8r0kxyu9tj8.cloudfront.net/images/1567492611Rj5siYiYrkqcvX8.jpg"
+            src={require(`../../assets/${bookDetail.image}`)}
             alt="Product"
           />
         </div>
         <div className="product-info">
-          <h2 className="product-name">Product Name</h2>
-          <p className="author">Author Name</p>
+          <h2 className="product-name">{bookDetail.name}</h2>
+          {/* <p className="author">Author Name</p> */}
 
           <p className="price">Price: ${totalPrice.toFixed(2)}</p>
           <div className="quantity-control">
@@ -52,16 +88,12 @@ const ProductDetail = () => {
       <div className="product-description">
         <p className="product-sumary">Product Summary Description</p>
         <p className="">
-          Cuốn sách chứa đựng những câu chuyện đẹp nhất của tuổi trẻ mà ai cũng
-          muốn được trải qua. Mùa hè là mùa của những chuyến đi, của những cuộc
-          phiêu lưu mới. Bởi sự rực rỡ tươi đẹp chẳng thể giấu giếm nổi và bầu
-          không khí phóng khoáng của trời hè xanh ngắt cứ thôi thúc ta đứng lên
-          đi để tìm cho mình một hành trình mới. Và cuốn sách cũng đã được bắt
-          đầu từ những hành trình như vậy.
+
+          {bookDetail.desc}
         </p>
       </div>
     </section>
   );
 };
 
-export default ProductDetail;
+export default BookDetail;

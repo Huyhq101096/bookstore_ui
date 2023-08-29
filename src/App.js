@@ -9,7 +9,6 @@ import Cart from './pages/user/Cart'
 import Admin from './pages/admin/Admin';
 import Shop from './pages/user/Shop';
 import AboutPerson from './pages/user/AboutPerson';
-import { URL } from './constants';
 
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 

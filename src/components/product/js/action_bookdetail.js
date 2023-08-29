@@ -1,9 +1,12 @@
-export const getAllProducts = (token) => {
+import { URLs } from "../../../constants";
+
+
+export const getBookDetail = (token,id) => {
     const headers = new Headers();
     console.log(token)
     headers.append("Authorization", token);
   
-    return fetch(`http://localhost:8080/books/getAllBook`, {
+    return fetch(`${URLs}books/getBookDetail?id=${id}`, {
       headers: headers,
     })
       .then((response) => response.json())

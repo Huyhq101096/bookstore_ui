@@ -4,17 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./content.css";
 import StarRatingComponent from "react-star-rating-component";
 import { AiOutlineFilter, AiOutlineSearch } from 'react-icons/ai';
-import best1 from '../../assets/IMG1.webp'
-import best2 from '../../assets/IMG2.webp'
-import best3 from '../../assets/IMG3.webp'
-import best4 from '../../assets/IMG4.webp'
-import best5 from '../../assets/IMG5.webp'
-import best6 from '../../assets/IMG6.webp'
-import best7 from '../../assets/IMG7.webp'
-import best8 from '../../assets/IMG8.webp'
-import best9 from '../../assets/IMG9.webp'
 import { getAllProducts } from './action_content';
-import { error } from "jquery";
+
 
 
 const getTokenFromLocalStorage = () => {
@@ -23,109 +14,7 @@ const getTokenFromLocalStorage = () => {
 
 const Content = () => {
 
-  const productList = [
-    {
-      id: 1,
-      name: "Product 1",
-      image: best1,
-      rating: 4.5,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      image: best2,
-      rating: 4.6,
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      image: best3,
-      rating: 3.5,
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      image: best4,
-      rating: 2.3,
-    },
-    {
-      id: 5,
-      name: "Product 5",
-      image:
-        best5,
-      rating: 2.9,
-    },
-    {
-      id: 6,
-      name: "Product 6",
-      image:
-      best6,
-      rating: 9.5,
-    },
-    {
-      id: 7,
-      name: "Product 7",
-      image:
-      best7,
-      rating: 3.6,
-    },
-    {
-      id: 8,
-      name: "Product 8",
-      image:
-      best8,
-      rating: 2.8,
-    },
-    {
-      id: 9,
-      name: "Product 9",
-      image:
-      best9,
-      rating: 3.9,
-    },
-    {
-      id: 10,
-      name: "Product 10",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 4.6,
-    },
-    {
-      id: 11,
-      name: "Product 11",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 4.65,
-    },
-    {
-      id: 12,
-      name: "Product 12",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 3.23,
-    },
-    {
-      id: 13,
-      name: "Product 13",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 2.36,
-    },
-    {
-      id: 14,
-      name: "Product 14",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 4.36,
-    },
-    {
-      id: 15,
-      name: "Product 15",
-      image:
-        "https://khothietke.net/wp-content/uploads/2021/05/PNGkhothietke.net-02705.png",
-      rating: 2.36,
-    },
-  ];
+
 
   const [productList1, setProductList] = useState([]);
 
@@ -140,7 +29,7 @@ const Content = () => {
   }, []);
 
   const productsPerPage = 8;
-  const totalPages = Math.ceil(productList.length / productsPerPage);
+  const totalPages = Math.ceil(productList1.length / productsPerPage);
 
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * productsPerPage;
