@@ -1,35 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./css/cart.css";
+import {sendPaymentData} from "./js/action_cart";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      image:
-        "https://toquoc.mediacdn.vn/280518851207290880/2022/12/22/12-1671683430473740576022.jpg",
-      name: "Product 1",
-      quantity: 2,
-      price: 10,
-    },
-    {
-      id: 2,
-      image:
-        "https://toquoc.mediacdn.vn/280518851207290880/2022/12/22/12-1671683430473740576022.jpg",
-      name: "Product 2",
-      quantity: 1,
-      price: 20,
-    },
-    {
-      id: 3,
-      image:
-        "https://toquoc.mediacdn.vn/280518851207290880/2022/12/22/12-1671683430473740576022.jpg",
-      name: "Product 3",
-      quantity: 3,
-      price: 15,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const existingCartItems =
+      JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(existingCartItems);
+  }, []);
 
   const increaseQuantity = (itemId) => {
     setCartItems((prevItems) =>
@@ -58,6 +40,14 @@ const CartPage = () => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
   };
 
+  const handlePayment = () => {
+    // Lấy dữ liệu từ local storage
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+    // Gọi hàm để gửi dữ liệu thanh toán lên server
+    sendPaymentData(cartItems);
+  };
+
   return (
     <div>
       <Header />
@@ -66,14 +56,14 @@ const CartPage = () => {
           <a href="/">Home</a>
           <span>Giỏ hàng</span>
         </div>
-        
+
         <div className="row cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="col-md-4">
               <div className="card mb-3">
                 <div className="d-flex align-items-start">
                   <img
-                    src={item.image}
+                    src={require(`../../assets/${item.image}`)}
                     alt={item.name}
                     className="card-img-top larger-image"
                   />
@@ -110,7 +100,7 @@ const CartPage = () => {
           ))}
         </div>
         <div className="cart-total">
-          <button>Thanh toán</button>
+          <button onClick={handlePayment}>Thanh toán</button>
           <p className="font-weight-bold">Tổng số tiền: {totalPrice}</p>
         </div>
       </div>

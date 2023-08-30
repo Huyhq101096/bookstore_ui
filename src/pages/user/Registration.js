@@ -10,7 +10,7 @@ const Registration = () => {
   const [passwordMatchError, setPasswordMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  // const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleEmailChange = (e) => {
@@ -60,6 +60,7 @@ const Registration = () => {
       const userData = { email, phone, password };
       const response = await registerUser(userData);
       setRegistrationSuccess(true); // Đăng ký thành công
+      setShowSuccessAlert(true)
       setShowPopup(true); // Hiển thị thông báo thành công
       console.log("Đăng ký thành công:", response);
       // Thực hiện các hành động sau khi đăng ký thành công (chuyển hướng, hiển thị thông báo, v.v.)

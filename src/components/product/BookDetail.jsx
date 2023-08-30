@@ -1,15 +1,13 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/productdetail.css";
 import { useParams } from "react-router-dom";
 import { getBookDetail } from "./js/action_bookdetail";
-
 
 const getTokenFromLocalStorage = () => {
   return localStorage.getItem("token");
 };
 
 const BookDetail = () => {
-
   const [quantity, setQuantity] = useState(1);
   const [bookDetail, setProductDetail] = useState(null);
   const [pricePerItem, setPricePerItem] = useState(0);
@@ -17,7 +15,7 @@ const BookDetail = () => {
 
   useEffect(() => {
     const token = getTokenFromLocalStorage(); // Lấy token từ localStorage
-   
+
     getBookDetail(token, id)
       .then((data) => {
         setProductDetail(data); // Lưu thông tin chi tiết sản phẩm vào state
@@ -27,7 +25,6 @@ const BookDetail = () => {
         console.error("Error fetching product data:", error);
       });
   }, []); // Chạy một lần khi component được tạo
-
 
   const setPricePerItemFromData = (data) => {
     if (data) {
@@ -48,7 +45,35 @@ const BookDetail = () => {
   };
 
   const handleAddToCart = () => {
-    // Add your logic to add the product to the cart
+    // Lấy danh sách sản phẩm từ local storage (nếu có)
+    const existingCartItems =
+      JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
+    const existingItemIndex = existingCartItems.findIndex(
+      (item) => item.id === bookDetail.id
+    );
+
+    if (existingItemIndex !== -1) {
+      // Nếu sản phẩm đã tồn tại, cập nhật lại số lượng và giá trị
+      existingCartItems[existingItemIndex].quantity += quantity;
+      existingCartItems[existingItemIndex].price = (
+        parseFloat(existingCartItems[existingItemIndex].price) + totalPrice
+      ).toFixed(2);
+    } else {
+      // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào danh sách
+      const newItem = {
+        id: bookDetail.id,
+        name: bookDetail.name,
+        image: bookDetail.image,
+        quantity: quantity,
+        price: totalPrice.toFixed(2),
+      };
+      existingCartItems.push(newItem);
+    }
+
+    // Lưu danh sách sản phẩm vào local storage
+    localStorage.setItem("cartItems", JSON.stringify(existingCartItems));
   };
 
   if (!bookDetail) {
@@ -87,10 +112,7 @@ const BookDetail = () => {
       </div>
       <div className="product-description">
         <p className="product-sumary">Product Summary Description</p>
-        <p className="">
-
-          {bookDetail.desc}
-        </p>
+        <p className="">{bookDetail.desc}</p>
       </div>
     </section>
   );
