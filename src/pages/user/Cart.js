@@ -2,50 +2,58 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./css/cart.css";
-import {sendPaymentData} from "./js/action_cart";
+import { sendPaymentData } from "./js/action_cart";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [cartData, setCartData] = useState({ order: [], totalPrice: 0 });
 
   useEffect(() => {
-    const existingCartItems =
-      JSON.parse(localStorage.getItem("cartItems")) || [];
-    setCartItems(existingCartItems);
+    const existingCartData = JSON.parse(localStorage.getItem("cartData")) || {
+      order: [],
+      totalPrice: 0,
+    };
+    setCartData(existingCartData);
   }, []);
 
   const increaseQuantity = (itemId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    setCartData((prevData) => ({
+      ...prevData,
+      order: prevData.order.map((item) =>
         item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+      ),
+    }));
   };
 
   const decreaseQuantity = (itemId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    setCartData((prevData) => ({
+      ...prevData,
+      order: prevData.order.map((item) =>
         item.id === itemId && item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item
-      )
-    );
+      ),
+    }));
   };
 
-  const totalPrice = cartItems.reduce(
+  const totalPrice = cartData.order.reduce(
     (total, item) => total + item.quantity * item.price,
     0
   );
 
   const removeItem = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setCartData((prevData) => ({
+      ...prevData,
+      order: prevData.order.filter((item) => item.id !== itemId),
+    }));
   };
 
   const handlePayment = () => {
-    // Lấy dữ liệu từ local storage
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    
+    // Lưu dữ liệu vào local storage
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+
     // Gọi hàm để gửi dữ liệu thanh toán lên server
-    sendPaymentData(cartItems);
+    sendPaymentData(cartData);
   };
 
   return (
@@ -58,7 +66,7 @@ const CartPage = () => {
         </div>
 
         <div className="row cart-items">
-          {cartItems.map((item) => (
+          {cartData.order.map((item) => (
             <div key={item.id} className="col-md-4">
               <div className="card mb-3">
                 <div className="d-flex align-items-start">

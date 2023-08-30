@@ -46,8 +46,12 @@ const BookDetail = () => {
 
   const handleAddToCart = () => {
     // Lấy danh sách sản phẩm từ local storage (nếu có)
-    const existingCartItems =
-      JSON.parse(localStorage.getItem("cartItems")) || [];
+    const existingCartData = JSON.parse(localStorage.getItem("cartData")) || {
+      order: [],
+      totalPrice: 0,
+    };
+
+    const existingCartItems = existingCartData.order;
 
     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
     const existingItemIndex = existingCartItems.findIndex(
@@ -72,8 +76,13 @@ const BookDetail = () => {
       existingCartItems.push(newItem);
     }
 
-    // Lưu danh sách sản phẩm vào local storage
-    localStorage.setItem("cartItems", JSON.stringify(existingCartItems));
+    // Cập nhật tổng giá tiền
+    existingCartData.totalPrice = (
+      parseFloat(existingCartData.totalPrice) + totalPrice
+    ).toFixed(2);
+
+    // Lưu dữ liệu vào local storage
+    localStorage.setItem("cartData", JSON.stringify(existingCartData));
   };
 
   if (!bookDetail) {

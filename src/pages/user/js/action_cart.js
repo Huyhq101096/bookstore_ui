@@ -2,12 +2,14 @@ import { URLs } from "../../../constants";
 
 export const sendPaymentData = async (data) => {
     try {
-        console.log(data)
+        // Lấy token từ local storage
+        const token = localStorage.getItem("token");
       // Gửi dữ liệu lên server thông qua API
       const response = await fetch(`${URLs}order/addOrder`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `${token}`,
         },
         body: JSON.stringify(data),
       });
