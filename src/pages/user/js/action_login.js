@@ -1,9 +1,10 @@
 import $ from "jquery";
+import { URLs } from "../../../constants";
 
 const handleLoginSubmit = (username, password) => {
 
   $.ajax({
-    url: "http://localhost:8080/login/signin",
+    url: `${URLs}login/signin`,
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({
