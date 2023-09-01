@@ -30,12 +30,12 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="header-info-right d-flex align-items-center header-right">
+        <div className="d-flex flex-row gap-3">
           <div className="cart">
             <FaShoppingCart className="icon" />
             <a href="/cart">Cart</a>
           </div>
-          <div className="login">
+          <div className="login mr-3">
             <FaUser className="icon" />
             <a href="/login">Login</a>
           </div>

@@ -28,7 +28,7 @@ const Content = () => {
     });
   }, []);
 
-  const productsPerPage = 8;
+  const productsPerPage = 12;
   const totalPages = Math.ceil(productList1.length / productsPerPage);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -78,7 +78,7 @@ const Content = () => {
                         />
                       </div>
                       <h4 className="product-name">{product.name}</h4>
-                      <p className="author-name">Ten tac gia</p>
+                      <p className="author-name">{product.author}</p>
                     </Link>
                     <div className="product-price-rating">
                       <div className="product-rating">
